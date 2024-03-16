@@ -10,7 +10,7 @@ else
 	COMPILER=$(CROSS_COMPILER_PREFIX)$(CC)		
 endif
 
-default :
+build :
 	$(COMPILER) $(CFLAGS) writer.c -o writer
 
 clean :
