@@ -25,6 +25,7 @@ ARCH=arm64
 CROSS_COMPILE=aarch64-none-linux-gnu-
 CC_SYSROOT=$(${CROSS_COMPILE}gcc -print-sysroot)
 
+
 if [ $# -lt 1 ]
 then
 	echo "Using default directory ${OUTDIR} for output"
@@ -121,7 +122,7 @@ sudo mknod -m 666 dev/null c 1 3
 sudo mknod -m 600 dev/console c 5 1
 
 # TODO: Clean and build the writer utility
-cd /home/gone/me/coursera/finder-app  
+cd $(FINDER_APP_DIR) 
 make clean 
 make CROSS_COMPILE=${CROSS_COMPILE}
 
