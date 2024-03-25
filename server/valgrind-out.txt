@@ -1,0 +1,202 @@
+==8169== Memcheck, a memory error detector
+==8169== Copyright (C) 2002-2017, and GNU GPL'd, by Julian Seward et al.
+==8169== Using Valgrind-3.15.0-608cb11914-20190413 and LibVEX; rerun with -h for copyright info
+==8169== Command: ./aesdsocket
+==8169== Parent PID: 8167
+==8169== 
+--8169-- 
+--8169-- Valgrind options:
+--8169--    --error-exitcode=1
+--8169--    --leak-check=full
+--8169--    --show-leak-kinds=all
+--8169--    --track-origins=yes
+--8169--    --errors-for-leak-kinds=definite
+--8169--    --verbose
+--8169--    --log-file=valgrind-out.txt
+--8169-- Contents of /proc/version:
+--8169--   Linux version 5.15.0-101-generic (buildd@lcy02-amd64-031) (gcc (Ubuntu 9.4.0-1ubuntu1~20.04.2) 9.4.0, GNU ld (GNU Binutils for Ubuntu) 2.34) #111~20.04.1-Ubuntu SMP Mon Mar 11 15:44:43 UTC 2024
+--8169-- 
+--8169-- Arch and hwcaps: AMD64, LittleEndian, amd64-cx16-lzcnt-rdtscp-sse3-ssse3-avx-avx2-bmi-rdrand
+--8169-- Page sizes: currently 4096, max supported 4096
+--8169-- Valgrind library directory: /usr/lib/x86_64-linux-gnu/valgrind
+--8169-- Reading syms from /home/ksudo/me/embedded-linux/coursera/assignment5p1v2/server/aesdsocket
+--8169-- Reading syms from /usr/lib/x86_64-linux-gnu/ld-2.31.so
+--8169--   Considering /usr/lib/debug/.build-id/7a/e2aaae1a0e5b262df913ee0885582d2e327982.debug ..
+--8169--   .. build-id is valid
+--8169-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/memcheck-amd64-linux
+--8169--    object doesn't have a symbol table
+--8169--    object doesn't have a dynamic symbol table
+--8169-- Scheduler: using generic scheduler lock implementation.
+--8169-- Reading suppressions file: /usr/lib/x86_64-linux-gnu/valgrind/default.supp
+==8169== embedded gdbserver: reading from /tmp/vgdb-pipe-from-vgdb-to-8169-by-ksudo-on-???
+==8169== embedded gdbserver: writing to   /tmp/vgdb-pipe-to-vgdb-from-8169-by-ksudo-on-???
+==8169== embedded gdbserver: shared mem   /tmp/vgdb-pipe-shared-mem-vgdb-8169-by-ksudo-on-???
+==8169== 
+==8169== TO CONTROL THIS PROCESS USING vgdb (which you probably
+==8169== don't want to do, unless you know exactly what you're doing,
+==8169== or are doing some strange experiment):
+==8169==   /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=8169 ...command...
+==8169== 
+==8169== TO DEBUG THIS PROCESS USING GDB: start GDB like this
+==8169==   /path/to/gdb ./aesdsocket
+==8169== and then give GDB the following command
+==8169==   target remote | /usr/lib/x86_64-linux-gnu/valgrind/../../bin/vgdb --pid=8169
+==8169== --pid is optional if only one valgrind process is running
+==8169== 
+--8169-- REDIR: 0x4022e20 (ld-linux-x86-64.so.2:strlen) redirected to 0x580c9ce2 (???)
+--8169-- REDIR: 0x4022bf0 (ld-linux-x86-64.so.2:index) redirected to 0x580c9cfc (???)
+--8169-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_core-amd64-linux.so
+--8169--    object doesn't have a symbol table
+--8169-- Reading syms from /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so
+--8169--    object doesn't have a symbol table
+==8169== WARNING: new redirection conflicts with existing -- ignoring it
+--8169--     old: 0x04022e20 (strlen              ) R-> (0000.0) 0x580c9ce2 ???
+--8169--     new: 0x04022e20 (strlen              ) R-> (2007.0) 0x0483f060 strlen
+--8169-- REDIR: 0x401f600 (ld-linux-x86-64.so.2:strcmp) redirected to 0x483ffd0 (strcmp)
+--8169-- REDIR: 0x4023380 (ld-linux-x86-64.so.2:mempcpy) redirected to 0x4843a20 (mempcpy)
+--8169-- Reading syms from /usr/lib/x86_64-linux-gnu/libc-2.31.so
+--8169--   Considering /usr/lib/debug/.build-id/ee/be5d5f4b608b8a53ec446b63981bba373ca0ca.debug ..
+--8169--   .. build-id is valid
+--8169-- REDIR: 0x48fc480 (libc.so.6:memmove) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb780 (libc.so.6:strncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc7b0 (libc.so.6:strcasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb0a0 (libc.so.6:strcat) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb7e0 (libc.so.6:rindex) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fdc50 (libc.so.6:rawmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x4918ce0 (libc.so.6:wmemchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x4918820 (libc.so.6:wcscmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc5e0 (libc.so.6:mempcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc410 (libc.so.6:bcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb710 (libc.so.6:strncmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb150 (libc.so.6:strcmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc540 (libc.so.6:memset) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x49187e0 (libc.so.6:wcschr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb670 (libc.so.6:strnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb230 (libc.so.6:strcspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc800 (libc.so.6:strncasecmp) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb1d0 (libc.so.6:strcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc950 (libc.so.6:memcpy@@GLIBC_2.14) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x4919f50 (libc.so.6:wcsnlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x4918860 (libc.so.6:wcscpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb820 (libc.so.6:strpbrk) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb100 (libc.so.6:index) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fb630 (libc.so.6:strlen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x4904bb0 (libc.so.6:memrchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc850 (libc.so.6:strcasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc3d0 (libc.so.6:memchr) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x4918930 (libc.so.6:wcslen) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fbae0 (libc.so.6:strspn) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc750 (libc.so.6:stpncpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc6f0 (libc.so.6:stpcpy) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fdc90 (libc.so.6:strchrnul) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x48fc8a0 (libc.so.6:strncasecmp_l) redirected to 0x48311d0 (_vgnU_ifunc_wrapper)
+--8169-- REDIR: 0x49e4730 (libc.so.6:__strrchr_avx2) redirected to 0x483ea10 (rindex)
+--8169-- REDIR: 0x48f60e0 (libc.so.6:malloc) redirected to 0x483b780 (malloc)
+--8169-- REDIR: 0x49e4540 (libc.so.6:__strchrnul_avx2) redirected to 0x4843540 (strchrnul)
+--8169-- REDIR: 0x49e5e40 (libc.so.6:__strcpy_avx2) redirected to 0x483f090 (strcpy)
+--8169-- REDIR: 0x48f7b10 (libc.so.6:calloc) redirected to 0x483dce0 (calloc)
+--8169-- REDIR: 0x49e4900 (libc.so.6:__strlen_avx2) redirected to 0x483ef40 (strlen)
+--8169-- REDIR: 0x48f66d0 (libc.so.6:free) redirected to 0x483c9d0 (free)
+--8169-- REDIR: 0x49e7910 (libc.so.6:__memcpy_avx_unaligned_erms) redirected to 0x48429f0 (memmove)
+--8169-- REDIR: 0x48fbfa0 (libc.so.6:__GI_strstr) redirected to 0x4843ca0 (__strstr_sse2)
+--8169-- REDIR: 0x49e0ef0 (libc.so.6:__memcmp_avx2_movbe) redirected to 0x48421e0 (bcmp)
+--8169-- REDIR: 0x49dfdf0 (libc.so.6:__strcmp_avx2) redirected to 0x483fed0 (strcmp)
+--8169-- REDIR: 0x49e78f0 (libc.so.6:__mempcpy_avx_unaligned_erms) redirected to 0x4843660 (mempcpy)
+--8169-- REDIR: 0x48f6e80 (libc.so.6:realloc) redirected to 0x483df30 (realloc)
+--8169-- REDIR: 0x49dfcc0 (libc.so.6:__strspn_sse42) redirected to 0x4843ef0 (strspn)
+--8169-- REDIR: 0x49dfa40 (libc.so.6:__strcspn_sse42) redirected to 0x4843e10 (strcspn)
+==8169== Invalid read of size 1
+==8169==    at 0x4843E6C: strcspn (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x48FC36D: strtok_r (strtok_r.c:64)
+==8169==    by 0x109A84: main (aesdsocket.c:179)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== Invalid read of size 1
+==8169==    at 0x48FC371: strtok_r (strtok_r.c:65)
+==8169==    by 0x109A84: main (aesdsocket.c:179)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+--8169-- REDIR: 0x49e4310 (libc.so.6:__strchr_avx2) redirected to 0x483ebf0 (index)
+==8169== Invalid read of size 1
+==8169==    at 0x483EC00: index (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A9C: main (aesdsocket.c:180)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== Invalid read of size 1
+==8169==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x48DECF8: fputs (iofputs.c:33)
+==8169==    by 0x109AE6: main (aesdsocket.c:191)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== Invalid read of size 1
+==8169==    at 0x48FC347: strtok_r (strtok_r.c:49)
+==8169==    by 0x109B03: main (aesdsocket.c:193)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+--8169-- REDIR: 0x49e7d90 (libc.so.6:__memset_avx2_unaligned_erms) redirected to 0x48428e0 (memset)
+==8169== 
+==8169== HEAP SUMMARY:
+==8169==     in use at exit: 0 bytes in 0 blocks
+==8169==   total heap usage: 67 allocs, 67 frees, 3,178,651 bytes allocated
+==8169== 
+==8169== All heap blocks were freed -- no leaks are possible
+==8169== 
+==8169== ERROR SUMMARY: 25 errors from 5 contexts (suppressed: 0 from 0)
+==8169== 
+==8169== 5 errors in context 1 of 5:
+==8169== Invalid read of size 1
+==8169==    at 0x48FC347: strtok_r (strtok_r.c:49)
+==8169==    by 0x109B03: main (aesdsocket.c:193)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== 
+==8169== 5 errors in context 2 of 5:
+==8169== Invalid read of size 1
+==8169==    at 0x483EF54: strlen (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x48DECF8: fputs (iofputs.c:33)
+==8169==    by 0x109AE6: main (aesdsocket.c:191)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== 
+==8169== 5 errors in context 3 of 5:
+==8169== Invalid read of size 1
+==8169==    at 0x483EC00: index (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A9C: main (aesdsocket.c:180)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== 
+==8169== 5 errors in context 4 of 5:
+==8169== Invalid read of size 1
+==8169==    at 0x48FC371: strtok_r (strtok_r.c:65)
+==8169==    by 0x109A84: main (aesdsocket.c:179)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== 
+==8169== 5 errors in context 5 of 5:
+==8169== Invalid read of size 1
+==8169==    at 0x4843E6C: strcspn (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x48FC36D: strtok_r (strtok_r.c:64)
+==8169==    by 0x109A84: main (aesdsocket.c:179)
+==8169==  Address 0x4aa56c8 is 0 bytes after a block of size 8 alloc'd
+==8169==    at 0x483DFAF: realloc (in /usr/lib/x86_64-linux-gnu/valgrind/vgpreload_memcheck-amd64-linux.so)
+==8169==    by 0x109A56: main (aesdsocket.c:176)
+==8169== 
+==8169== ERROR SUMMARY: 25 errors from 5 contexts (suppressed: 0 from 0)

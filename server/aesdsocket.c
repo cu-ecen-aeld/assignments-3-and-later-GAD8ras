@@ -11,6 +11,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 
+#include <errno.h>
 #define PORT 9000  // Replace with desired port number
 #define PACKET_SIZE_standard 300000  // Adjust as needed
 
@@ -118,7 +119,7 @@ int main(int argc, char *argv[])
   	// ... (socket creation and setsockopt)
  	// Create socket file descriptor
    		
-  		 if (bind(sockfd, (struct sockaddr*)&addr, sizeof(addr)) == 0) 
+  		 if (bind(server_fd, (struct sockaddr*)&address, sizeof(address)) == 0) 
   		 {
     			bound = 1;
   		 } 
@@ -145,12 +146,12 @@ int main(int argc, char *argv[])
 
      while(1) 
     {
-        printf("again\n");
+      //  printf("again\n");
         // Accept incoming connection
         if ((client_fd = accept(server_fd, (struct sockaddr *)&address, (socklen_t*)&addrlen)) < 0) 
         {
             syslog(LOG_ERR,"ERROR WHILE Accepting incoming connection");
-            printf("here");
+           // printf("here");
             return -1;
         }
         else
@@ -161,7 +162,7 @@ int main(int argc, char *argv[])
                 syslog(LOG_ERR,"ERROR WHILE Getting client IP address");
                 return -1;
             }
-            printf("Client connected from IP: %s\n", client_ip);
+          //  printf("Client connected from IP: %s\n", client_ip);
             syslog(LOG_DEBUG,"Accepted connection from %s",client_ip);
         }
         
@@ -171,29 +172,29 @@ int main(int argc, char *argv[])
         if((valread = read(client_fd, buffer2, PACKET_SIZE_standard-1)) > 0) 
         { 
             //buffer2[valread]='\0';
-            printf("valread = %lu   %d",valread,PACKET_SIZE_standard);
+          //  printf("valread = %lu   %d",valread,PACKET_SIZE_standard);
             buffer2=realloc(buffer2,valread);
             file_ptr = fopen("/var/tmp/aesdsocketdata", "a");  // Append to file
-            printf("opend the file to append\n");
+         //   printf("opend the file to append\n");
             token = strtok(buffer2, "\\");   
             newline_ptr = strstr(buffer2,"\\");
            // printf("%d\n",strlen(newline_ptr));
             if(token==NULL)
             {
-                printf("%s \n",buffer2);
+              //  printf("%s \n",buffer2);
                 fprintf(file_ptr,"%s",buffer2);  // Append packet to file
                 fflush(file_ptr);  // Flush file to ensure content is written  
             }
             while(token != NULL)
             {
-                printf("%s",token);
+               // printf("%s",token);
                 fprintf(file_ptr,"%s",token);  // Append packet to file
                 fflush(file_ptr);  // Flush file to ensure content is written
                 token=strtok(NULL,"\\");
             }
             fclose(file_ptr);
             memset(buffer2, 0, valread);
-            printf("\nclosing the file\n");
+           // printf("\nclosing the file\n");
         }
         
         //writing to the client
@@ -202,10 +203,10 @@ int main(int argc, char *argv[])
         printf("opend the file to read\n");
         if ((sent_bytes=fread(buffer2,sizeof(char),PACKET_SIZE_standard-1,file_ptr)) > 0) 
         {   
-            printf("sent_bytes = %lu\n",sent_bytes);
+            //printf("sent_bytes = %lu\n",sent_bytes);
             buffer2=realloc(buffer2,sent_bytes+1);
             buffer2[sent_bytes]='\0';
-            printf("start writing\n");
+          //  printf("start writing\n");
             token = strtok(buffer2,"\\");   
             newline_ptr = strstr(buffer2,"\\");
             if(token==NULL)
@@ -218,8 +219,8 @@ int main(int argc, char *argv[])
                 send(client_fd, token, strlen(token), 0); 
                 token=strtok(NULL,"\\");
             }
-            printf("write to file\nbuffer = %s\n",buffer2);
-        } else printf("no data is written \n");
+           // printf("write to file\nbuffer = %s\n",buffer2);
+        } else //printf("no data is written \n");
         syslog(LOG_DEBUG,"Closed connection from %s",client_ip);
         memset(buffer2, 0, sent_bytes);
         sent_bytes =0;
